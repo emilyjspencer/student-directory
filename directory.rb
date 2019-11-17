@@ -1,16 +1,24 @@
-students = [  # Multi-dimentional array   # then made it an array of hases
-  {name: "Dr. Hannibal Lecter", cohort: :november}, # [0][0]
-  {name: "Darth Vader", cohort: :november}, # [0][1]
-  {name: "Nurse Ratched", cohort: :november},
-  {name: "Michael Corleone", cohort: :november},
-  {name: "Alex DeLarge", cohort: :november},
-  {name: "The Wicked Witch of the West", cohort: :november},
-  {name: "Terminator", cohort: :november},
-  {name: "Freddy Krueger", cohort: :november},
-  {name: "The Joker", cohort: :november},
-  {name: "Joffrey Baratheon", cohort: :november},
-  {name: "Norman Bates", cohort: :november}
-]
+
+def input_students
+  puts "Please enter the names of the students"
+  puts "To finish, just hit return twice"
+  # create an empty array
+  students = []
+  name = gets.chomp  # name stored in variable
+  while !name.empty? do  # set up while loop
+  # while the name is not empty, repeat this code
+    # add the student hash to the array
+    students << {name: name, cohort: :november}
+    puts "Now we have #{students.count} students"
+    # get another name from the user
+    name = gets.chomp
+  end
+  students # Print the students array - with their names and cohorts
+end
+
+# The above method will keep prompting the user to enter another name
+# until they type nothing - simply pressing the enter button
+# The total number of students will then be printed 
 
 # Define the methods
 def print_header
@@ -30,6 +38,7 @@ def print_footer(students) # only names - but the methods still don't
 end 
 
 # Call the methods
+students = input_students # the students are the ones that the user entered
 print_header
 print_names(students) 
 print_footer(students)
