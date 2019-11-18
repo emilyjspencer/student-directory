@@ -1,3 +1,28 @@
+def interactive_menu
+  students = []  # set up array to push students to
+  loop do # set up a loop
+    # 1. print the menu and ask the user what to do
+    puts "1. Input the students"
+    puts "2. Show the students"
+    puts "9. Exit" # 9 because we'll be adding more items
+    # 2. read the input and save it into a variable
+    selection = gets.chomp
+    # 3. do what the user has asked
+    case selection
+    when "1" # if the user enters '1' - the students they enter are saved to
+      students = input_students 
+    when "2"  # if the user enters '2' - everything will be printed
+      print_header
+      print_names(students)
+      print_footer(students)
+    when "9"   # if the user enters '9' the program will exit
+      exit # this will cause the program to terminate
+    else  # if the user enters none of these - the following error is raised 
+      puts "I don't know what you meant, try again"
+    end
+  end
+end
+
 
 def input_students
   puts "Please enter the names of the students"
@@ -33,12 +58,15 @@ def print_names(students) # Passing our students variable as students argument b
 end
                            # renamed argument names to students because we are no longer passing
 def print_footer(students) # only names - but the methods still don't
-  puts "Overall, we have #{students.count} great students"   # have access to the
+  puts "\nOverall, we have #{students.count} great students"   # have access to the
   # we could also use students.length       # students variable defined at the top 
 end 
 
 # Call the methods
-students = input_students # the students are the ones that the user entered
+# students = input_students # the students are the ones that the user entered
+interactive_menu
 print_header
 print_names(students) 
 print_footer(students)
+
+
